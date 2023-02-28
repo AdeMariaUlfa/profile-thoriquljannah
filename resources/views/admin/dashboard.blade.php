@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="manifest" href="site.html">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/img/icon.png') }}"> 
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/img/icon.png') }}">
     <!-- Place favicon.ico in the root directory-->
 
     <!-- CSS here -->
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('template/css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/responsive.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -73,28 +74,12 @@
                                     <li class="toggle-search-icon">
                                         <a href="/logout">LOGOUT</a>
                                     </li>
-                                  
+
                                 </ul>
                             </div>
                             <div class="main-menu f-right">
                                 <nav id="mobile-menu" style="display: block;">
-                                    <!-- <ul>
-                                        <li>
-                                            <a href="/">BERANDA</a>
-                                        </li>
-                                        <li>
-                                            <a href="/profil">PROFIL</a>
-                                        </li>
-                                        <li>
-                                            <a href="/unit">UNIT GARAPAN</a>
-                                        </li>
-                                        <li>
-                                            <a href="/berita">BERITA</a>
-                                        </li>
-                                        <li>
-                                            <a href="/galeri">GALERI</a>
-                                        </li>
-                                    </ul> -->
+
                                 </nav>
                             </div>
                         </div>
@@ -107,8 +92,136 @@
             <!-- /end header-bottom -->
         </div>
     </header>
+
     <body>
-        ISI TABEL
+        <div id="about" class="about-area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="m-4">
+                        <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#tambah">Tambah</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Judul</th>
+                                <th scope="col">Detail</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($data as $berita)
+                            <tr>
+                                <td>{{$berita->id}}</td>
+                                <td>{{$berita->judul}}</td>
+                                <td><a href="/detail/{{$berita->id}}" class="btn btn-primary">Detail</a></td>
+                                <td> <button type="button" data-toggle="modal" data-target="#edit{{$berita->id}}" class="btn btn-warning">Update</button> |
+                                    <button type="button" data-toggle="modal" data-target="#hapus{{$berita->id}}" class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Tambah -->
+        <div class="modal" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Berita</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/inputBerita" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <img id="previewImg" src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png" alt="Placeholder" style="height: 300px; width: 100%;">
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input class="form-control" type="file" name="img" id="formFile" onchange="preview_imageTambah(event);">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputJudul">Judul</label>
+                                <input type="text" name="judul" class="form-control" id="exampleInputJudul" aria-describedby="judulHelp" placeholder="Judul...">
+                            </div>
+                            <div class="form-group">
+                                <label>Konten</label>
+                                <textarea class="form-control" name="konten" id="summernote" rows="10"></textarea>
+                            </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @foreach($data as $berita)
+        <!-- Modal Update -->
+        <div class="modal" id="edit{{$berita->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Berita</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/edit/{{$berita->id}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <img id="previewImg2" src="{{asset('/uploads/'.$berita->img)}}" alt="Placeholder" style="height: 300px; width: 100%;">
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input class="form-control" type="file" name="img" id="formFile" onchange="preview_imageUpdate(event);">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputJudul">Judul</label>
+                                <input type="text" class="form-control" id="exampleInputJudul" name="judul" aria-describedby="judulHelp" placeholder="Judul..." value="{{$berita->judul}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Konten</label>
+                                <textarea class="form-control" rows="10" name="konten">{{$berita->konten}}</textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @foreach($data as $berita)
+        <!-- Modal Hapus -->
+        <div class="modal" id="hapus{{$berita->id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p> Apakah Anda Yakin Ingin Menghapus ?</p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                            <a href="/delete/{{$berita->id}}" class="btn btn-danger">Iya</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
     </body>
     <!-- footer start -->
     <footer id="Contact">
@@ -118,7 +231,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="footer-widget mb-30">
-                                
+
                                 <div class="footer-socila-icon">
                                     <span>Ikuti Kami</span>
                                     <div class="footer-social-icon-list">
@@ -148,7 +261,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="col-xl-3 col-lg-4  col-md-6">
                             <div class="footer-widget mb-30">
                                 <div class="footer-heading">
@@ -177,7 +290,6 @@
     </footer>
     <!-- footer end -->
 
-
     <!-- JS here -->
     <script src="{{ asset('template/js/vendor/modernizr-3.5.0.min.js') }}"></script>
     <script src="{{ asset('template/js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -198,6 +310,26 @@
     <script src="{{ asset('template/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('template/js/plugins.js') }}"></script>
     <script src="{{ asset('template/js/main.js') }}"></script>
+    <script>
+        function preview_imageTambah(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('previewImg');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <script>
+        function preview_imageUpdate(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('previewImg2');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 
 

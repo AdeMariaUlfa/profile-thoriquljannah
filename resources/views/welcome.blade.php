@@ -81,10 +81,13 @@
                         <div class="col-xl-10 col-lg-10 col-md-6 col-6">
                             <div class="header-bottom-icon f-right">
                                 <ul>
-                                    <li class="toggle-search-icon"><a href="/login">LOGIN</a>
-
+                                    @if(Auth::user())
+                                    <li class="toggle-search-icon"><a href="/login">{{Auth::user()->name}}</a>
                                     </li>
-                                  
+                                    @else
+                                    <li class="toggle-search-icon"><a href="/login">LOGIN</a>
+                                    </li>
+                                  @endif
                                 </ul>
                             </div>
                             <div class="main-menu f-right">

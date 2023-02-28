@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\beritaController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {return view('welcome');});
 Route::get('/profil', function () {return view('profil');});
 Route::get('/unit', function () {return view('unit');});
-Route::get('/berita', function () {return view('berita');});
+Route::get('/berita', [beritaController::class, 'berita'])->name('berita');
 Route::get('/galeri', function () {return view('galeri');});
-Route::get('/login', function () {return view('login');});
-Route::get('/dashboard', function () {return view('admin.dashboard');});
+
+Route::get('/login',  [userController::class, 'login'])->name('login');
+Route::get('/dashboard', [beritaController::class, 'index'])->name('dashboard');
+Route::post('/aksiLogin',  [userController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/logout',  [userController::class, 'logout'])->name('logout');
+Route::post('/inputBerita', [beritaController::class, 'inputBerita'])->name('inputBerita');
+Route::post('/edit/{id}', [beritaController::class, 'editBerita'])->name('editBerita');
+Route::get('/delete/{id}', [beritaController::class, 'deleteBerita'])->name('deleteBerita');
+Route::get('/detail/{id}', [beritaController::class, 'detailBerita'])->name('detailBerita');
 

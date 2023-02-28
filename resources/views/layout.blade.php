@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="manifest" href="site.html">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/img/icon.png') }}"> 
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/img/icon.png') }}">
     <!-- Place favicon.ico in the root directory-->
 
     <!-- CSS here -->
@@ -81,10 +81,14 @@
                         <div class="col-xl-10 col-lg-10 col-md-6 col-6">
                             <div class="header-bottom-icon f-right">
                                 <ul>
-                                    <li class="toggle-search-icon"><a href="/login">LOGIN</a>
-
+                                    @if(Auth::user())
+                                    <li class="toggle-search-icon"><a href="/login">{{Auth::user()->name}}</a>
                                     </li>
-                                  
+                                    @else
+                                    <li class="toggle-search-icon"><a href="/login">LOGIN</a>
+                                    </li>
+                                    @endif
+
                                 </ul>
                             </div>
                             <div class="main-menu f-right">
@@ -206,7 +210,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="footer-widget mb-30">
-                                
+
                                 <div class="footer-socila-icon">
                                     <span>Ikuti Kami</span>
                                     <div class="footer-social-icon-list">
@@ -236,7 +240,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="col-xl-3 col-lg-4  col-md-6">
                             <div class="footer-widget mb-30">
                                 <div class="footer-heading">
