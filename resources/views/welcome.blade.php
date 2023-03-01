@@ -453,60 +453,27 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($data as $b)
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="blog-wrapper mb-30">
                         <div class="blog-thumb mb-25">
-                            <a href="news_details.html"><img src="{{ asset('template/img/blog/blog_thumb_1.jpg') }}" alt=""></a>
+                            <a href="news_details.html"><img src="{{ asset('uploads/'.$b->img) }}" alt=""></a>
                             <span class="blog-category">news</span>
                         </div>
                         <div class="blog-content">
                             <div class="blog-meta">
-                                <span>Auguest 25, 2018</span>
+                                <span>{{ date('M d, Y', strtotime($b->created_at)) }}</span>
                             </div>
-                            <h5><a href="news_details.html">Some say education is the process of gaining information is nation.</a></h5>
-                            <p>Belis nisl adipiscing sapien sed malesu diame lacus eget erat Cras mollis scele.</p>
+                            <h5><a href="/detail/{{$b->id}}">{{$b->judul}}</a></h5>
+                            <p>{{ substr($b->konten, 0, 70) . '...' }}</p>
                             <div class="read-more-btn">
-                                <button>Read more</button>
+                            <a href="/detail/{{$b->id}}">Read more</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="blog-wrapper mb-30">
-                        <div class="blog-thumb mb-25">
-                            <a href="news_details.html"><img src="{{ asset('template/img/blog/blog_thumb_2.jpg') }}" alt=""></a>
-                            <span class="blog-category">news</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span>Auguest 25, 2018</span>
-                            </div>
-                            <h5><a href="news_details.html">Education gives us a knowledge of the world around us and changes </a></h5>
-                            <p>Belis nisl adipiscing sapien sed malesu diame lacus eget erat Cras mollis scele.</p>
-                            <div class="read-more-btn">
-                                <button>Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="blog-wrapper mb-30">
-                        <div class="blog-thumb mb-25">
-                            <a href="news_details.html"><img src="{{ asset('template/img/blog/blog_thumb_3.jpg') }}" alt=""></a>
-                            <span class="blog-category">news</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span>Auguest 25, 2018</span>
-                            </div>
-                            <h5><a href="news_details.html">One thing I wish I can do is, to provide education for all child left behind </a></h5>
-                            <p>Belis nisl adipiscing sapien sed malesu diame lacus eget erat Cras mollis scele.</p>
-                            <div class="read-more-btn">
-                                <button>Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               @endforeach
+                
             </div>
         </div>
     </div>

@@ -10,6 +10,11 @@ class beritaController extends Controller
 {
     public function index()
     {
+        $data = berita::offset(0)->limit(3)->get();
+        return view('welcome', compact('data'));
+    }
+    public function dashboard()
+    {
         $data = berita::all();
         return view('admin.dashboard', compact('data'));
     }
