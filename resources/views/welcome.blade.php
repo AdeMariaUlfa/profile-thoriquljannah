@@ -410,28 +410,21 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="{{ asset('template/img/counter/counter_icon1.png') }}" alt="">
-                        <span class="counter">41</span>
-                        <h3>Santri Laki-Laki</h3>
+                        <img src="https://thoriquljannah.000webhostapp.com/template/img/counter/counter_icon1.png" alt="">
+                        <span class="counter">90</span>
+                        <h3>Jumlah Santri</h3>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="{{ asset('template/img/counter/counter_icon1.png') }}" alt="">
-                        <span class="counter">42</span>
-                        <h3>Santri Perempuan</h3>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3">
-                    <div class="couter-wrapper mb-30 text-center">
-                        <img src="{{ asset('template/img/counter/counter_icon2.png') }}" alt="">
+                        <img src="https://thoriquljannah.000webhostapp.com/template/img/counter/counter_icon2.png" alt="">
                         <span class="counter">3</span>
                         <h3>Unit Garapan</h3>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="{{ asset('template/img/counter/counter_icon4.png') }}" alt="">
+                        <img src="https://thoriquljannah.000webhostapp.com/template/img/counter/counter_icon4.png" alt="">
                         <span class="counter">7</span>
                         <h3>Guru / Ustadz</h3>
                     </div>

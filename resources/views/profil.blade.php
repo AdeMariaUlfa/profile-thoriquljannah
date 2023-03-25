@@ -40,8 +40,7 @@
                     </div>
                     <div class="about-title-section about-title-section-2 mb-30">
                         <h1>Visi Misi Kita</h1>
-                        <p>Menyediakan fasilitas tempat tinggal dan pendidikan bagi anak yatim piatu dan dhuafa (fakir miskin dan anak-anak terlantar) yang berada di wilayah Kota Sumedang.<br>
-                        Untuk dididik menjadi Pribadi Muslim yang beriman dan bertaqwa, cerdas, terampil, dan berbudi pekertiluhur ( berakhlaqul karimah ).</p>
+                        <p>Untuk mencetak generasi islami yang Rahmatan Lil'alamiin, mendidik generasi untuk dapat mengenal Tuhan-Nya, mendidik generasi agar terbiasa melaksanakan kewajiban-Nya sesuai syariat, menyiapkan kader-kader islami sejak remaja, dan membiasakan generasi agar dapat memiliki adab berakhlakul karimah.</p>
                     </div>
                 </div>
             </div>
@@ -57,18 +56,12 @@
     <div class="counter-area primary-bg">
         <div class="container pt-90 pb-65">
             <div class="row">
+               
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper couter-wrapper-2 mb-30 text-center">
                         <img src="{{ asset('template/img/counter/counter_icon1.png') }}" alt="">
-                        <span class="counter">41</span>
-                        <h3>Santri Laki-Laki</h3>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3">
-                    <div class="couter-wrapper couter-wrapper-2 mb-30 text-center">
-                        <img src="{{ asset('template/img/counter/counter_icon1.png') }}" alt="">
-                        <span class="counter">42</span>
-                        <h3>Santri Perempuan</h3>
+                        <span class="counter">90</span>
+                        <h3>Jumlah Santri</h3>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3">
