@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\beritaController;
+use App\Http\Controllers\BotManController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,4 @@ Route::post('/inputBerita', [beritaController::class, 'inputBerita'])->name('inp
 Route::post('/edit/{id}', [beritaController::class, 'editBerita'])->name('editBerita');
 Route::get('/delete/{id}', [beritaController::class, 'deleteBerita'])->name('deleteBerita');
 Route::get('/detail/{id}', [beritaController::class, 'detailBerita'])->name('detailBerita');
-
+Route::match(['get', 'post'], '/botman', [BotManController::class,'handle']);

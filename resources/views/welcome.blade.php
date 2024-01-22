@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="manifest" href="site.html">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/img/icon.png') }}"> 
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/img/icon.png') }}">
     <!-- Place favicon.ico in the root directory-->
 
     <!-- CSS here -->
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('template/css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/responsive.css') }}">
+    
 </head>
 
 <body>
@@ -87,7 +88,7 @@
                                     @else
                                     <li class="toggle-search-icon"><a href="/login">LOGIN</a>
                                     </li>
-                                  @endif
+                                    @endif
                                 </ul>
                             </div>
                             <div class="main-menu f-right">
@@ -460,17 +461,17 @@
                             <h5><a href="/detail/{{$b->id}}">{{$b->judul}}</a></h5>
                             <p>{{ substr($b->konten, 0, 70) . '...' }}</p>
                             <div class="read-more-btn">
-                            <a href="/detail/{{$b->id}}">Read more</a>
+                                <a href="/detail/{{$b->id}}">Read more</a>
                             </div>
                         </div>
                     </div>
                 </div>
-               @endforeach
-                
+                @endforeach
+
             </div>
         </div>
     </div>
-   
+
     <!-- footer start -->
     <footer id="Contact">
         <div class="footer-area primary-bg pt-150">
@@ -479,7 +480,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="footer-widget mb-30">
-                                
+
                                 <div class="footer-socila-icon">
                                     <span>Follow Us</span>
                                     <div class="footer-social-icon-list">
@@ -509,7 +510,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="col-xl-3 col-lg-4  col-md-6">
                             <div class="footer-widget mb-30">
                                 <div class="footer-heading">
@@ -539,6 +540,20 @@
     <!-- footer end -->
 
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+    <script>
+        var botmanWidget = {
+            chatServer: "/botman",
+            title: 'Chat Bot Thoriqul Jannah',
+            headerTextColor: '#fff',
+            aboutText: 'ssdsd',
+            introMessage: "Selamat Datang Di Thoriqul Jannah ada yang mau ditanyakan",
+            bubbleBackground: "#408591",
+
+        };
+    </script>
+
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     <!-- JS here -->
     <script src="{{ asset('template/js/vendor/modernizr-3.5.0.min.js') }}"></script>
     <script src="{{ asset('template/js/vendor/jquery-1.12.4.min.js') }}"></script>
